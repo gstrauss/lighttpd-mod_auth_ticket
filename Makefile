@@ -2,8 +2,6 @@
 
 # Where lighttpd source tarball is extracted
 LIGHTTPD_DIR = /d/src/lighttpd/1.4.x
-#LIGHTTPD_DIR = /d/src/lighttpd-1.4.29
-#LIGHTTPD_DIR = /d/src/lighttpd-1.4.28
 
 ######################################################################
 
@@ -22,7 +20,7 @@ CFLAGS = $(LIGHTTPD_DEFS) $(COMPAT_DEFS) \
 CC = gcc
 LD = gcc
 
-SRCS = mod_auth_ticket.c base64.c
+SRCS = mod_auth_ticket.c
 OBJS = $(SRCS:.c=.o)
 
 .c.o:
