@@ -132,3 +132,21 @@ cookie using PHP.
 - Allow authinfo injection using URL (for distributed auth)
 - Add demo in other programming languages
 - Make it compatible with Apache mod_auth_tkt/mod_auth_pubtkt.
+
+=== LIMITATIONS ===
+
+**NOTE** due to these serious limitations, development is unlikely to continue.
+Instead, please prefer lighttpd mod_authn_tkt port of Apache mod_auth_tkt:
+  https://github.com/gstrauss/lighttpd-mod_authn_tkt
+
+* mod_auth_ticket stores tickets in lighttpd process memory
+  * unbounded memory use as new tickets are created, though freed after expire
+  * tickets do not survive lighttpd restart
+  * tickets are not usable across multiple server instances / machines
+* mod_auth_ticket is not written to refresh cookies before cookie timeout
+* mod_auth_ticket is not written to add expires= to cookie for timeout
+* mod_auth_ticket is not written to use the lighttpd mod_auth framework
+
+Prior version (https://github.com/tai/mod-auth-ticket-for-lighttpd)
+* mod_auth_ticket has unbounded memory use; expired tickets not deleted from mem
+* mod_auth_ticket has inefficient buffer use
