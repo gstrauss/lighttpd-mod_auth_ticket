@@ -1,0 +1,8 @@
+If you want to use Python CGI, just copy it to the web_root:
+cp login.cgi web_root/
+
+Or if you want to use the C version, build it and it will be copied to web_root automatically:
+make
+
+Then execute with:
+lighttpd -f lighttpd.conf -D
